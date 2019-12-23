@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Крепость АПК</string>
+
+    <string name="headerDescription">Датчик:</string>
+    <string name="headerStatus">Статус:</string>
+
+    <string name="btnOn">Включить</string>
+    <string name="btnOff">Выключить</string>
+    <string name="btnAlarm">Тревога!</string>
+
+
+    <string name="txtDescription">Открытие двери в ванной</string>
+    <string name="txtStatus">Под охраной, дверь закрыта</string>
+
+    <string name="back_desc">Схема охраняемого объекта</string>
+
+</resources>
