@@ -13,5 +13,9 @@
     <string name="txtStatus">Под охраной, дверь закрыта</string>
 
     <string name="back_desc">Схема охраняемого объекта</string>
+    <string name="home">Home</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Sensors</string>
+    <string name="title_notifications">Notifications</string>
 
 </resources>
