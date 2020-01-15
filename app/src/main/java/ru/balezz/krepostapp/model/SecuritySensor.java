@@ -1,4 +1,4 @@
-package ru.balezz.krepostapp;
+package ru.balezz.krepostapp.model;
 
 import java.util.UUID;
 
