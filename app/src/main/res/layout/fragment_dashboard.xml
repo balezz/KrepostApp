@@ -1,27 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
     android:orientation="vertical">
 
-    <fragment
-        android:id="@+id/scheme_fragment_id"
-        android:name="ru.balezz.krepostapp.SchemeFragment"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:layout_weight="1" />
-
-    <fragment
-        android:id="@+id/sensor_fragment_id"
-        android:name="ru.balezz.krepostapp.SensorFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:layout_weight="1" />
-
+        />
 
 </LinearLayout>
 

@@ -17,5 +17,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Sensors</string>
     <string name="title_notifications">Notifications</string>
+    <string name="scheme_title_stub">Помещение № ххх</string>
 
 </resources>
