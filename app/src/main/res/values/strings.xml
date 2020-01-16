@@ -14,9 +14,11 @@
 
     <string name="back_desc">Схема охраняемого объекта</string>
     <string name="home">Home</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Sensors</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Помещения</string>
+    <string name="title_dashboard">Датчики</string>
+    <string name="title_notifications">Уведомления</string>
     <string name="scheme_title_stub">Помещение № ххх</string>
+    <string name="sensor_title_stub">Датчик закрытия двери № ххх</string>
+    <string name="notify_title_stub">Сработал датчик открытия двери № ххх</string>
 
 </resources>
