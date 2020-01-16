@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.612">
+        android:layout_weight="0.5"
+        android:layout_marginBottom="8dp"
+        >
 
         <ImageView
             android:id="@+id/imageBackground"
@@ -25,8 +27,8 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:contentDescription="@string/back_desc"
-            app:layout_constraintBottom_toBottomOf="@+id/imageBackground"
 
+            app:layout_constraintBottom_toBottomOf="@+id/imageBackground"
             app:layout_constraintEnd_toEndOf="@+id/imageBackground"
             app:layout_constraintHorizontal_bias="0.311"
             app:layout_constraintStart_toStartOf="@+id/imageBackground"
@@ -110,7 +112,7 @@
         android:id="@+id/schemes_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.388"
+        android:layout_weight="0.5"
 
         />
 
