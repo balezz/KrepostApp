@@ -17,8 +17,12 @@
     <string name="title_home">Помещения</string>
     <string name="title_dashboard">Датчики</string>
     <string name="title_notifications">Уведомления</string>
-    <string name="scheme_title_stub">Помещение № ххх</string>
-    <string name="sensor_title_stub">Датчик закрытия двери № ххх</string>
-    <string name="notify_title_stub">Сработал датчик открытия двери № ххх</string>
+    <string name="scheme_title_stub">Помещение № 12</string>
+    <string name="sensor_title_stub">Открытие двери № 12</string>
+    <string name="notify_title_stub">Сработал датчик!</string>
+    <string name="notify_detail_stub">Открытие двери в помещeнии № 12</string>
+    <string name="notify_time_stub">12-00 31.01.2019 г.</string>
+    <string name="scheme_detail_stub">Адрес: ул. Ленина 38А кв. 7</string>
+    <string name="sensor_detail_stub">Состояние: На связи, дверь закрыта.</string>
 
 </resources>
