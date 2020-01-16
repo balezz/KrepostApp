@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/notify_title_stub"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@id/notify_image"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
