@@ -1,44 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp">
-
-    <TextView
-        android:id="@+id/scheme_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/scheme_title_stub"
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        app:layout_constraintEnd_toStartOf="@id/setting_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/scheme_detail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/scheme_detail_stub"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/setting_image"
-        app:layout_constraintTop_toBottomOf="@id/scheme_title"
-        android:layout_marginStart="8dp"
-        />
 
     <ImageView
         android:id="@+id/setting_image"
         android:layout_width="0dp"
 
         android:layout_height="match_parent"
-        android:layout_marginEnd="8dp"
         android:contentDescription="@string/scheme_title_stub"
         android:scaleType="center"
-        android:src="@drawable/ic_settings_black"
+        android:src="@drawable/ic_home_black_48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/scheme_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/scheme_title_stub"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/setting_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/scheme_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/scheme_detail_stub"
+        app:layout_constraintStart_toEndOf="@+id/setting_image"
+        app:layout_constraintTop_toBottomOf="@+id/scheme_title" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_more_vert_black_48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
