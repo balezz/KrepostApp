@@ -1,22 +1,29 @@
 package ru.balezz.krepostapp.model;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ru.balezz.krepostapp.R;
+import ru.balezz.krepostapp.database.KrepostBaseHelper;
 
 public class KrepostLab {
     private static KrepostLab sKrepostLab;
     private Context mContext;
+    private SQLiteDatabase mDatabase;
     private List<RoomScheme> mSchemes;
     private List<SecuritySensor> mSensors;
     private List<Notify> mNotifies;
 
     private KrepostLab(Context context) {
-        mContext = context;
+        mContext = context.getApplicationContext();
+        mDatabase = new KrepostBaseHelper(mContext)
+                .getWritableDatabase();
+
+        // temp stubs
         generateSchemes();
         generateSensors();
         generateNotifies();
