@@ -20,9 +20,30 @@ public class KrepostBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + RoomsTable.NAME);
-        db.execSQL("create table " + SensorsTable.NAME);
-        db.execSQL("create table " + NotifiesTable.NAME);
+        db.execSQL("create table " + RoomsTable.NAME
+                + "(" + "_id integer primary key autoincrement, " +
+                RoomsTable.Cols.ID + ", " +
+                RoomsTable.Cols.TITLE + ", " +
+                RoomsTable.Cols.DETAIL + ", " +
+                RoomsTable.Cols.IMAGE + ")"
+        );
+
+        db.execSQL("create table " + SensorsTable.NAME
+                + "(" + "_id integer primary key autoincrement, " +
+                SensorsTable.Cols.ID + ", " +
+                SensorsTable.Cols.TITLE + ", " +
+                SensorsTable.Cols.DETAIL + ", " +
+                SensorsTable.Cols.IMAGE + ")"
+        );
+
+        db.execSQL("create table " + NotifiesTable.NAME
+                + "(" + "_id integer primary key autoincrement, " +
+                NotifiesTable.Cols.ID + ", " +
+                NotifiesTable.Cols.TITLE + ", " +
+                NotifiesTable.Cols.DETAIL + ", " +
+                NotifiesTable.Cols.DATE + ", " +
+                NotifiesTable.Cols.IMAGE + ")"
+        );
     }
 
     @Override
