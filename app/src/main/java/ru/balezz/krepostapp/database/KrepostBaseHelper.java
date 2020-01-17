@@ -25,7 +25,8 @@ public class KrepostBaseHelper extends SQLiteOpenHelper {
                 RoomsTable.Cols.ID + ", " +
                 RoomsTable.Cols.TITLE + ", " +
                 RoomsTable.Cols.DETAIL + ", " +
-                RoomsTable.Cols.IMAGE + ")"
+                RoomsTable.Cols.IMAGE + ", " +
+                RoomsTable.Cols.SENSORS + ")"
         );
 
         db.execSQL("create table " + SensorsTable.NAME

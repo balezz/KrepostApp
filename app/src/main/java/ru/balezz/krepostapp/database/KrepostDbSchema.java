@@ -8,6 +8,7 @@ public class KrepostDbSchema {
             public static final String TITLE = "title";
             public static final String DETAIL = "detail";
             public static final String IMAGE = "image";
+            public static final String SENSORS = "sensors";
         }
     }
 
