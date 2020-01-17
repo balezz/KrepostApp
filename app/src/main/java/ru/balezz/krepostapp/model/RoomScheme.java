@@ -1,18 +1,35 @@
 package ru.balezz.krepostapp.model;
 
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-
-import java.util.List;
 
 public class RoomScheme {
     ImageView imgBackground;
-    String mCapture;
+    String mTitle;
+    String mDetail;
+    Drawable mImage;
 
-    public RoomScheme(String capture) {
-        mCapture = capture;
+    public Drawable getImage() {
+        return mImage;
     }
 
-    public String getCapture() {
-        return mCapture;
+    public void setImage(Drawable image) {
+        mImage = image;
+    }
+
+    public RoomScheme(String title) {
+        mTitle = title;
+    }
+
+    public String getTitle() {
+        return mTitle;
+    }
+
+    public String getDetail() {
+        return mDetail;
+    }
+
+    public void setDetail(String detail) {
+        mDetail = detail;
     }
 }

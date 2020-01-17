@@ -1,17 +1,22 @@
 package ru.balezz.krepostapp.model;
 
+import android.graphics.drawable.Drawable;
+
 import java.util.UUID;
 
 public class SecuritySensor {
     UUID uuid;
-    String description;
+    String mTitle;
+    String mDetail;
+    Drawable mSensorImage;
+
     int status;
     int x;
     int y;
 
     public SecuritySensor() {
         uuid = UUID.randomUUID();
-        description = "Empty description";
+        mTitle = "Empty mTitle";
     }
 
     public SecuritySensor(int x, int y) {
@@ -24,12 +29,12 @@ public class SecuritySensor {
         return uuid;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTitle() {
+        return mTitle;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTitle(String title) {
+        this.mTitle = title;
     }
 
     public int getStatus() {
@@ -38,5 +43,21 @@ public class SecuritySensor {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getDetail() {
+        return mDetail;
+    }
+
+    public void setDetail(String detail) {
+        mDetail = detail;
+    }
+
+    public Drawable getSensorImage() {
+        return mSensorImage;
+    }
+
+    public void setSensorImage(Drawable sensorImage) {
+        mSensorImage = sensorImage;
     }
 }

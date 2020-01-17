@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,16 +23,23 @@ public class HomeFragment extends Fragment {
 
     RecyclerView mSchemesRecyclerView;
     SchemeAdapter mSchemeAdapter;
+    ImageView mSchemeImageView;
+
 
     private class SchemeHolder extends RecyclerView.ViewHolder {
-        TextView mTextView;
+        TextView mSchemeTitle;
+        TextView mSchemeDetail;
 
         public SchemeHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_scheme, parent, false));
+            mSchemeTitle = (TextView) itemView.findViewById(R.id.scheme_title);
+            mSchemeDetail = (TextView) itemView.findViewById(R.id.scheme_detail);
         }
 
         private void bindView(RoomScheme scheme) {
-            mTextView.setText(scheme.getCapture());
+            mSchemeTitle.setText(scheme.getTitle());
+            mSchemeDetail.setText(scheme.getDetail());
+            mSchemeImageView.setImageDrawable(scheme.getImage());
         }
     }
 
@@ -51,7 +59,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull SchemeHolder holder, int position) {
-
+            holder.bindView(mRoomSchemes.get(position));
         }
 
         @Override
@@ -65,6 +73,7 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         mSchemesRecyclerView = (RecyclerView) root.findViewById(R.id.schemes_recyclerview);
         mSchemesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mSchemeImageView = root.findViewById(R.id.imageScheme);
         updateUI();
         return root;
     }

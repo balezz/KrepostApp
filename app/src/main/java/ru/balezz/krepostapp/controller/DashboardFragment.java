@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,8 +24,21 @@ public class DashboardFragment extends Fragment {
     RecyclerView mSensorsRecyclerView;
 
     private class SensorHolder extends RecyclerView.ViewHolder {
+        TextView mSensorTitle;
+        TextView mSensorDetail;
+        ImageView mSensorImage;
+
         public SensorHolder(LayoutInflater inflater, @NonNull ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_sensor, parent, false));
+            mSensorTitle = (TextView) itemView.findViewById(R.id.sensor_title);
+            mSensorDetail = (TextView) itemView.findViewById(R.id.sensor_detail);
+            mSensorImage = (ImageView) itemView.findViewById(R.id.sensor_image);
+        }
+
+        public void bindSensor(SecuritySensor sensor) {
+            mSensorTitle.setText(sensor.getTitle());
+            mSensorDetail.setText(sensor.getDetail());
+            mSensorImage.setImageDrawable(sensor.getSensorImage());
         }
     }
 
@@ -43,7 +58,7 @@ public class DashboardFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull SensorHolder holder, int position) {
-
+            holder.bindSensor(mSensors.get(position));
         }
 
         @Override

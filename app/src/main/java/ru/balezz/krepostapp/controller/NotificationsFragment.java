@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -21,9 +23,23 @@ public class NotificationsFragment extends Fragment {
     RecyclerView mRecyclerView;
 
     private class NotifyViewHolder extends RecyclerView.ViewHolder {
-
+        TextView mNotifyTitle;
+        TextView mNotifyDetail;
+        TextView mNotifyTime;
+        ImageView mNotifyImage;
         public NotifyViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_notify, parent, false));
+            mNotifyTitle = (TextView) itemView.findViewById(R.id.notify_title);
+            mNotifyTime = (TextView) itemView.findViewById(R.id.notify_time);
+            mNotifyDetail = (TextView) itemView.findViewById(R.id.notify_detail);
+            mNotifyImage = (ImageView) itemView.findViewById(R.id.notify_image);
+        }
+
+        public void bindNotify(Notify notify) {
+            mNotifyTitle.setText(notify.getTitle());
+            mNotifyDetail.setText(notify.getDetail());
+            mNotifyTime.setText(notify.getTime());
+            mNotifyImage.setImageDrawable(notify.getNotifyImage());
         }
     }
 
@@ -43,7 +59,7 @@ public class NotificationsFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull NotifyViewHolder holder, int position) {
-
+            holder.bindNotify(mNotifies.get(position));
         }
 
         @Override
