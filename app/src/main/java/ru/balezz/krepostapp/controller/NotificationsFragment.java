@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ru.balezz.krepostapp.R;
+import ru.balezz.krepostapp.model.KrepostLab;
 import ru.balezz.krepostapp.model.Notify;
-import ru.balezz.krepostapp.model.NotifyLab;
 
 public class NotificationsFragment extends Fragment {
 
@@ -81,7 +81,8 @@ public class NotificationsFragment extends Fragment {
     }
 
     private void updateUI() {
-        List<Notify> notifies = NotifyLab.getInstance(getActivity()).getNotifies();
+        List<Notify> notifies = KrepostLab
+                .getInstance(getActivity()).getNotifies();
         NotifyAdapter adapter = new NotifyAdapter(notifies);
         mRecyclerView.setAdapter(adapter);
     }
