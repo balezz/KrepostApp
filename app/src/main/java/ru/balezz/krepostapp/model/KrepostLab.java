@@ -54,7 +54,8 @@ public class KrepostLab {
         // requires API-21
         Drawable imageStub = mContext.getDrawable(R.drawable.scheme2);
         for (int i = 1; i < 10; i++) {
-            RoomScheme roomScheme = new RoomScheme(titleStub + " " + i);
+            RoomScheme roomScheme = new RoomScheme();
+            roomScheme.setTitle(titleStub + " " + i);
             roomScheme.setDetail(detailStub + " " +  i);
             roomScheme.setImage(imageStub);
             mSchemes.add(roomScheme);
@@ -85,7 +86,7 @@ public class KrepostLab {
             Notify notify = new Notify();
             notify.setTitle(stubTitle);
             notify.setDetail(stubDetail + " " + i);
-            notify.setTime(stubTime);
+            notify.setDate(stubTime);
             notify.setNotifyImage(stubImageDrawable);
             mNotifies.add(notify);
         }

@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable;
 public class Notify {
     private String mTitle;
     private String mDetail;
-    private String mTime;
+    private String mDate;
     private Drawable mNotifyImage;
 
     public String getTitle() {
@@ -32,11 +32,11 @@ public class Notify {
         mNotifyImage = notifyImage;
     }
 
-    public String getTime() {
-        return mTime;
+    public String getDate() {
+        return mDate;
     }
 
-    public void setTime(String time) {
-        mTime = time;
+    public void setDate(String date) {
+        mDate = date;
     }
 }

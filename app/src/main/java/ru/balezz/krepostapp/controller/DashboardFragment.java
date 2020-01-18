@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ru.balezz.krepostapp.R;
+import ru.balezz.krepostapp.connect.Fetcher;
 import ru.balezz.krepostapp.model.KrepostLab;
 import ru.balezz.krepostapp.model.SecuritySensor;
 
@@ -81,8 +82,7 @@ public class DashboardFragment extends Fragment {
     }
 
     private void updateUI() {
-        List<SecuritySensor> sensors = KrepostLab
-                .getInstance(getActivity()).getSensors();
+        List<SecuritySensor> sensors = new Fetcher(getContext()).fetchSensors();
         SensorAdapter adapter = new SensorAdapter(sensors);
         mSensorsRecyclerView.setAdapter(adapter);
     }

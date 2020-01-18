@@ -17,12 +17,15 @@ public class RoomScheme {
         mImage = image;
     }
 
-    public RoomScheme(String title) {
-        mTitle = title;
+    public RoomScheme() {
     }
 
     public String getTitle() {
         return mTitle;
+    }
+
+    public void setTitle(String title) {
+        mTitle = title;
     }
 
     public String getDetail() {

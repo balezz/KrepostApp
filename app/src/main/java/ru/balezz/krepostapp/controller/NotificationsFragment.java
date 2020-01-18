@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ru.balezz.krepostapp.R;
+import ru.balezz.krepostapp.connect.Fetcher;
 import ru.balezz.krepostapp.model.KrepostLab;
 import ru.balezz.krepostapp.model.Notify;
 
@@ -39,7 +40,7 @@ public class NotificationsFragment extends Fragment {
         public void bindNotify(Notify notify) {
             mNotifyTitle.setText(notify.getTitle());
             mNotifyDetail.setText(notify.getDetail());
-            mNotifyTime.setText(notify.getTime());
+            mNotifyTime.setText(notify.getDate());
             mNotifyImage.setImageDrawable(notify.getNotifyImage());
         }
     }
@@ -81,8 +82,7 @@ public class NotificationsFragment extends Fragment {
     }
 
     private void updateUI() {
-        List<Notify> notifies = KrepostLab
-                .getInstance(getActivity()).getNotifies();
+        List<Notify> notifies = new Fetcher(getActivity()).fetchNotifies();
         NotifyAdapter adapter = new NotifyAdapter(notifies);
         mRecyclerView.setAdapter(adapter);
     }

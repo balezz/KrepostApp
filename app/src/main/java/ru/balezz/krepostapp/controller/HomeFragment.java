@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ru.balezz.krepostapp.R;
+import ru.balezz.krepostapp.connect.Fetcher;
 import ru.balezz.krepostapp.model.KrepostLab;
 import ru.balezz.krepostapp.model.RoomScheme;
 
@@ -82,10 +83,10 @@ public class HomeFragment extends Fragment {
     }
 
     private void updateUI() {
-        List<RoomScheme> schemes = KrepostLab
-                .getInstance(getActivity()).getSchemes();
-
-        mSchemeAdapter = new SchemeAdapter(schemes);
+/*        List<RoomScheme> schemes = KrepostLab
+                .getInstance(getActivity()).getSchemes();*/
+        List<RoomScheme> schemes = new Fetcher(getActivity()).fetchRooms();
+                mSchemeAdapter = new SchemeAdapter(schemes);
         mSchemesRecyclerView.setAdapter(mSchemeAdapter);
     }
 }
