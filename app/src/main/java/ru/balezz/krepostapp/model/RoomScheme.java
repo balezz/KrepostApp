@@ -3,8 +3,10 @@ package ru.balezz.krepostapp.model;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
+import java.util.UUID;
+
 public class RoomScheme {
-    ImageView imgBackground;
+    UUID mUUID;
     String mTitle;
     String mDetail;
     Drawable mImage;
