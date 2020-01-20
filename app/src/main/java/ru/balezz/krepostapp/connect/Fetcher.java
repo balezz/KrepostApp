@@ -104,9 +104,9 @@ public class Fetcher {
 
                 // todo: sensor image setup logic
                 if (sensorImage.equals(LIMIT_SENSOR)) {
-                    drawable = mContext.getDrawable(R.drawable.ic_security_black_24dp);
+                    drawable = mContext.getDrawable(R.drawable.ic_security_black_32dp);
                 } else {
-                    drawable = mContext.getDrawable(R.drawable.ic_security_black_24dp);
+                    drawable = mContext.getDrawable(R.drawable.ic_security_black_32dp);
                 }
 
                 sensor.setTitle(title);

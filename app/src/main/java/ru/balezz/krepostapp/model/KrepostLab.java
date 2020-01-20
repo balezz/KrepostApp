@@ -66,7 +66,7 @@ public class KrepostLab {
         mSensors = new ArrayList<>();
         String stubTitle = mContext.getString(R.string.sensor_title_stub);
         String stubDetail = mContext.getString(R.string.sensor_detail_stub);
-        Drawable stubDrawable = mContext.getDrawable(R.drawable.ic_security_black_24dp);
+        Drawable stubDrawable = mContext.getDrawable(R.drawable.ic_security_black_32dp);
         for (int i = 1; i < 30; i++) {
             SecuritySensor sensor = new SecuritySensor();
             sensor.setTitle(stubTitle + " " + i);
