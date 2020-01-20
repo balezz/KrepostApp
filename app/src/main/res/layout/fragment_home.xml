@@ -10,16 +10,17 @@
         android:id="@+id/imageScheme"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.618"
         android:contentDescription="@string/back_desc"
         android:src="@drawable/scheme2"
+        android:layout_margin="8dp"
         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/schemes_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.382"
  />
 
 </LinearLayout>

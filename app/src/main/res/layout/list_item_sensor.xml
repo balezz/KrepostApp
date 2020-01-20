@@ -14,7 +14,7 @@
         android:layout_marginStart="8dp"
         android:text="@string/sensor_title_stub"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sensor_image"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/sensor_title_stub"
         android:scaleType="center"
-        android:src="@drawable/ic_security_black_24dp"
+        android:src="@drawable/ic_security_black_32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +43,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_more_vert_black_48dp"
+        android:src="@drawable/ic_more_vert_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
