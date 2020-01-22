@@ -1,5 +1,6 @@
 package ru.balezz.krepostapp.controller;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,16 +17,17 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.balezz.krepostapp.R;
 import ru.balezz.krepostapp.connect.Fetcher;
-import ru.balezz.krepostapp.model.KrepostLab;
 import ru.balezz.krepostapp.model.Notify;
 
 public class NotificationsFragment extends Fragment {
-
+    private static final String TAG = "NotificationsFragment";
     RecyclerView mRecyclerView;
+    List<Notify> mNotifies = new ArrayList<>();
 
     private class NotifyViewHolder extends RecyclerView.ViewHolder {
         TextView mNotifyTitle;
@@ -73,10 +75,26 @@ public class NotificationsFragment extends Fragment {
         }
     }
 
+    private class FetchNotifiesTask extends AsyncTask<Void, Void, List<Notify>> {
+
+        @Override
+        protected List<Notify> doInBackground(Void... voids) {
+            return new Fetcher(getActivity()).fetchNotifies();
+        }
+
+        @Override
+        protected void onPostExecute(List<Notify> notifies) {
+            mNotifies = notifies;
+            setupAdapter();
+        }
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        setRetainInstance(true);
+        new FetchNotifiesTask().execute();
     }
 
     @Override
@@ -93,14 +111,15 @@ public class NotificationsFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(),
                 DividerItemDecoration.VERTICAL));
-        updateUI();
+        setupAdapter();
         return root;
     }
 
-    private void updateUI() {
-        List<Notify> notifies = new Fetcher(getActivity()).fetchNotifies();
-        NotifyAdapter adapter = new NotifyAdapter(notifies);
-        mRecyclerView.setAdapter(adapter);
+    private void setupAdapter() {
+        if(isAdded()){
+            NotifyAdapter adapter = new NotifyAdapter(mNotifies);
+            mRecyclerView.setAdapter(adapter);
+        }
     }
 
 

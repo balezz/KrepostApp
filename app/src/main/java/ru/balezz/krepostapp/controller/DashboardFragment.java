@@ -1,5 +1,6 @@
 package ru.balezz.krepostapp.controller;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,16 +17,18 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.balezz.krepostapp.R;
 import ru.balezz.krepostapp.connect.Fetcher;
-import ru.balezz.krepostapp.model.KrepostLab;
 import ru.balezz.krepostapp.model.SecuritySensor;
 
 public class DashboardFragment extends Fragment {
+    private static final String TAG = "DashboardFragment";
 
     RecyclerView mSensorsRecyclerView;
+    List<SecuritySensor> mSensors = new ArrayList<>();
 
     private class SensorHolder extends RecyclerView.ViewHolder {
         TextView mSensorTitle;
@@ -71,10 +74,26 @@ public class DashboardFragment extends Fragment {
         }
     }
 
+    private class FetchSensorsTask extends AsyncTask<Void, Void, List<SecuritySensor>> {
+
+        @Override
+        protected List<SecuritySensor> doInBackground(Void... voids) {
+            return new Fetcher(getActivity()).fetchSensors();
+        }
+
+        @Override
+        protected void onPostExecute(List<SecuritySensor> sensors) {
+            mSensors = sensors;
+            setupAdapter();
+        }
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        setRetainInstance(true);
+        new FetchSensorsTask().execute();
     }
 
     @Override
@@ -92,13 +111,14 @@ public class DashboardFragment extends Fragment {
         mSensorsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mSensorsRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(),
                 DividerItemDecoration.VERTICAL));
-        updateUI();
+        setupAdapter();
         return root;
     }
 
-    private void updateUI() {
-        List<SecuritySensor> sensors = new Fetcher(getContext()).fetchSensors();
-        SensorAdapter adapter = new SensorAdapter(sensors);
-        mSensorsRecyclerView.setAdapter(adapter);
+    private void setupAdapter() {
+        if (isAdded()){
+            SensorAdapter adapter = new SensorAdapter(mSensors);
+            mSensorsRecyclerView.setAdapter(adapter);
+        }
     }
 }

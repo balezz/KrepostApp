@@ -1,5 +1,6 @@
 package ru.balezz.krepostapp.controller;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.balezz.krepostapp.R;
@@ -24,11 +26,12 @@ import ru.balezz.krepostapp.connect.Fetcher;
 import ru.balezz.krepostapp.model.RoomScheme;
 
 public class HomeFragment extends Fragment {
+    private static final String TAG = "HomeFragment";
 
     RecyclerView mSchemesRecyclerView;
     SchemeAdapter mSchemeAdapter;
     ImageView mSchemeImageView;
-
+    List<RoomScheme> mSchemes = new ArrayList<>();
 
     private class SchemeHolder extends RecyclerView.ViewHolder {
         TextView mSchemeTitle;
@@ -72,10 +75,27 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    private class FetchRoomsTask extends AsyncTask<Void, Void, List<RoomScheme>> {
+        @Override
+        protected List<RoomScheme> doInBackground(Void... voids) {
+            List<RoomScheme> roomSchemes = new Fetcher(getContext())
+                    .fetchRooms();
+            return roomSchemes;
+        }
+
+        @Override
+        protected void onPostExecute(List<RoomScheme> roomSchemes) {
+            mSchemes = roomSchemes;
+            setupAdapter();
+        }
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        setRetainInstance(true);
+        new FetchRoomsTask().execute();
     }
 
     @Override
@@ -92,15 +112,17 @@ public class HomeFragment extends Fragment {
         mSchemesRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(),
                 DividerItemDecoration.VERTICAL));
         mSchemeImageView = root.findViewById(R.id.imageScheme);
-        updateUI();
+        setupAdapter();
         return root;
     }
 
-    private void updateUI() {
+    private void setupAdapter() {
 /*        List<RoomScheme> schemes = KrepostLab
                 .getInstance(getActivity()).getSchemes();*/
-        List<RoomScheme> schemes = new Fetcher(getActivity()).fetchRooms();
-                mSchemeAdapter = new SchemeAdapter(schemes);
-        mSchemesRecyclerView.setAdapter(mSchemeAdapter);
+        if (isAdded()) {
+            mSchemeAdapter = new SchemeAdapter(mSchemes);
+            mSchemesRecyclerView.setAdapter(mSchemeAdapter);
+        }
+
     }
 }
